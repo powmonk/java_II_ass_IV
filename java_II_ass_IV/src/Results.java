@@ -1,9 +1,23 @@
-package array;
 
-public class marks {
+public class Results {
 	public static void main(String[] args){
+		result = ReadFileAsArray.readFile(args[0]);
+		
+		result = alphabetiseArray(result);
 		
 	}
+	
+	private static String[] alphabetiseArray(String[] result) {
+		for(int i=0;i<result.length;i++){
+			String[] temp = result[i].split(" |	");
+			bullshit[i] = temp;
+		}
+		
+		return null;
+	}
+	private static String[][] bullshit;
+	private static String[] result;
+	
 }
 
 

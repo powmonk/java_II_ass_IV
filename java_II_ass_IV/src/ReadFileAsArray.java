@@ -2,12 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ReadFileAsArray {
-	public static ArrayList<String> readFileMethod(String fileName){
+	public static String[] readFileMethod(String fileName){
 		BufferedReader reader = null;
-		ArrayList<String> wordList = new ArrayList<String>();
 		
 		try{
 			reader = new BufferedReader(new FileReader(fileName));
@@ -18,26 +16,28 @@ public class ReadFileAsArray {
 		
 		boolean done = false;
 		String inputLine = null;
-		
 		int count = 0;
+		String[] results = new String[0];
 		
-		//this loop counts the number of lines in the file to create the array
 		while(!done){
 			try{
-				reader.readLine();
-				count++;
+				inputLine = reader.readLine();
 			}catch(IOException ioe){
 				System.out.println("I/O error");
 				System.exit(2);
 			}
+			
 			if(inputLine == null){
 				done = true;
+			}else{
+				String[] temp = new String[results.length+1];
+				System.arraycopy(results, 0, temp, 0, results.length);
+				results = new String[temp.length];
+				System.arraycopy(temp, 0, results, 0, temp.length);
+				results[count] = inputLine;
+				count++;
 			}
 		}
-		
-		String[] names = new String[count];
-
-		
 		
 		try{
 			reader.close();
@@ -46,11 +46,10 @@ public class ReadFileAsArray {
 			System.exit(3);
 		}
 		
-		return wordList;
+		return results;
 	}
 	
-	public static ArrayList<String> readFile(String fileName){
+	public static String[] readFile(String fileName){
 		return readFileMethod(fileName);
-		
 	}
 }
