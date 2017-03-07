@@ -1,42 +1,44 @@
+import java.io.IOException;
 
 public class Results {
-	private static void alphabetiseArray() {
+	private static void alphabetiseArray(int word, int letter) {
 		boolean done = false;
 		String[] workAry = result;
 		int count = workAry.length-1;
 		int floor = 0;
-		int word = 1;
-		int letter = 0;
+//		int letter = 2;
 
 		while(!done){
+			int a =-1;
+            int b =-1;
+            
+			
+
 			if(count > floor){
-				int a = (int)Character.toUpperCase(workAry[count].split(" |	")[word].charAt(letter));
-				int b = (int)Character.toUpperCase(workAry[count-1].split(" |	")[word].charAt(letter));
-				
+				a = (int)Character.toUpperCase(workAry[count  ].split(" |	")[word].charAt(letter));
+				b = (int)Character.toUpperCase(workAry[count-1].split(" |	")[word].charAt(letter));
+
 				if(a<b){
-//					System.out.println("comparison hit");
 					String cache = workAry[count-1];
 					workAry[count-1] = workAry[count];
 					workAry[count] = cache;
 				}
-				
 				count--;	
 			}else if(floor == workAry.length){
-				if(word == 0){
-					word = 1;
-					letter = 1;
+				if(letter > 0){
+					letter--;
 					floor = 0;
 					count = workAry.length-1;
 				
 				}else{
 					done = true;
 				}
-//				done = true;
 			}else{
 				floor++;
 				count = workAry.length-1;
 			}
 		}
+			
 		result = workAry;
 	}
 	
@@ -44,10 +46,10 @@ public class Results {
 	public static void main(String[] args){
 		result = ReadFileAsArray.readFile("marks.txt");
 		
-		alphabetiseArray();
+		alphabetiseArray(0,0);
+		alphabetiseArray(1,1);
 		
 		for(int i=0;i<result.length;i++){
-			//System.out.println((int)Character.toUpperCase(result[i].split(" |	")[1].charAt(0)));
 			System.out.println(result[i]);
 		}
 		
@@ -66,6 +68,4 @@ http://www.ebay.co.uk/itm/like/152370462725?lpid=122&chn=ps&adgroupid=1358592042
 https://joybird.com/
 
 http://www.coalesse.com/products/seating/lounge-chairs-sofas/hosu/
-
-
 */
