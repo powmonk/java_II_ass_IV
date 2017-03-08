@@ -15,8 +15,8 @@ public class Results {
 
 		while(!done){
 			if(count > floor){
-				Integer a = (int)(Character.toUpperCase(result[count  ].split(" |	")[word].charAt(letter)));
-				Integer b = (int)(Character.toUpperCase(result[count-1].split(" |	")[word].charAt(letter)));
+				int a = (int)(Character.toUpperCase(result[count  ].split(" |	")[word].charAt(letter)));
+				int b = (int)(Character.toUpperCase(result[count-1].split(" |	")[word].charAt(letter)));
 
 				if(a<b){
 					swap(count-1, count);
