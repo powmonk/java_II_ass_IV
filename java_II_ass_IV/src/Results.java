@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class Results {
 	private static void swap(int pos1, int pos2){
@@ -36,16 +37,58 @@ public class Results {
 			}
 		}
 	}
-
-	public static void main(String[] args){
-		result = ReadFileAsArray.readFile("marks.txt");
-		
-		alphabetiseArray(0,0);
-		alphabetiseArray(1,2);
-		
+	
+	private static void swapPositions(int x, int y) {
 		for(int i=0;i<result.length;i++){
-			System.out.println(result[i]);
+			String[] loopArray = result[i].split(" |	");
+			String cache = loopArray[0];
+			loopArray[0] = loopArray[1];
+			loopArray[1] = cache;
+			result[i]="";
+			for(int j=0;j<loopArray.length;j++){
+				result[i]= result[i] + loopArray[j] + " ";
+			}
 		}
 	}
+
+
+	public static void main(String[] args){
+			result = ReadFileAsArray.readFile("marks.txt");
+			
+			getMaxValues();
+			
+			alphabetiseArray(1,0);
+			alphabetiseArray(0,2);
+			
+			swapPositions(0,1);
+			
+			String underline = String.valueOf((char)196);
+			underline = underline + underline + underline + underline;
+			
+			output.printf("%-"+nameLng+"s%-10s\n", "Name", "Mark");			
+			output.printf("%-"+nameLng+"s%-10s\n", underline, underline);		
+			
+			for(int i=0;i<result.length;i++){
+				String[] tmp = result[i].split(" |	");
+				output.printf("%-"+nameLng+"s%3s\n", tmp[0]+" "+tmp[1],tmp[2]);
+			}
+	}
+	
+	private static void getMaxValues() {
+		for(int i=0;i<result.length;i++){
+			String[] tmp = result[i].split(" |	");
+			if(tmp[0].length()>initLng)
+				initLng = tmp[0].length();
+			
+			if(tmp[1].length()>surLng)
+				surLng = tmp[1].length();
+		}
+		nameLng = initLng + surLng;
+	}
+
+	private static int initLng = 0;
+	private static int surLng = 0;
+	private static int nameLng = 0;
+	private static PrintStream output = new PrintStream(System.out);
 	private static String[] result;
 }

@@ -39,7 +39,7 @@ public class Results {
 	}
 
 	public static void main(String[] args){
-		result = ReadFileAsArray.readFile("marks.txt");
+		result = ReadFileAsVector.readFile("marks.txt");
 		
 		alphabetiseArray(0,0);
 		alphabetiseArray(1,2);
