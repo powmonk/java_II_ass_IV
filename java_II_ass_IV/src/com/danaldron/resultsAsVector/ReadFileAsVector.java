@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class ReadFileAsVector {
-	public static Vector<String> readFileMethod(String fileName){
+	public static Vector<String[]> readFileMethod(String fileName){
 		BufferedReader reader = null;
-		Vector<String> wordList = new Vector<String>();
+		Vector<String[]> wordList = new Vector<String[]>();
 		
 		try{
 			reader = new BufferedReader(new FileReader(fileName));
@@ -31,7 +31,7 @@ public class ReadFileAsVector {
 			if(inputLine == null){
 				done = true;
 			}else{
-				wordList.add(inputLine);
+				wordList.add(inputLine.split(" |	"));
 			}
 		}
 		try{
@@ -44,7 +44,7 @@ public class ReadFileAsVector {
 		return wordList;
 	}
 	
-	public static Vector<String> readFile(String fileName){
+	public static Vector<String[]> readFile(String fileName){
 		return readFileMethod(fileName);
 		
 	}
