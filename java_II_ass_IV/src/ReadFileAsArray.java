@@ -11,7 +11,7 @@ public class ReadFileAsArray {
 			reader = new BufferedReader(new FileReader(fileName));
 		}catch(FileNotFoundException fnfe){
 			System.out.println("Error on opening file data");
-			System.exit(1);
+			System.exit(2);
 		}
 		
 		boolean done = false;
@@ -24,7 +24,7 @@ public class ReadFileAsArray {
 				inputLine = reader.readLine();
 			}catch(IOException ioe){
 				System.out.println("I/O error");
-				System.exit(2);
+				System.exit(3);
 			}
 			
 			if(inputLine == null){
@@ -43,7 +43,7 @@ public class ReadFileAsArray {
 			reader.close();
 		}catch(IOException ioe){
 			System.out.println("Error closing file '"+fileName+"'");
-			System.exit(3);
+			System.exit(4);
 		}
 		
 		return results;

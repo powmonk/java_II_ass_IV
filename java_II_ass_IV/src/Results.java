@@ -17,12 +17,16 @@ public class Results {
 
 		while(!done){
 			if(count > floor){
-				if(letter < result[count].split(" |	")[word].length()){
-					a = (int)(Character.toUpperCase(result[count  ].split(" |	")[word].charAt(letter)));
+				String[] currLine = result[count].split(" |	");
+				String[] nextLine = result[count-1].split(" |	");
+				
+				
+				if(letter < currLine[word].length()){
+					a = (int)(Character.toUpperCase(currLine[word].charAt(letter)));
 				}
 
-				if(letter < result[count-1].split(" |	")[word].length()){
-					b = (int)(Character.toUpperCase(result[count-1].split(" |	")[word].charAt(letter)));
+				if(letter < nextLine[word].length()){
+					b = (int)(Character.toUpperCase(nextLine[word].charAt(letter)));
 				}
 
 				if(a<b){
