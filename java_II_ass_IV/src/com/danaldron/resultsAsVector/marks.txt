@@ -5,8 +5,7 @@ Wilson N 70
 Rawls WB 54
 Bell S 95
 Burrell EG 52
-Barksdale DA 80
-Barksdale DB 80
+Barksdale D 80
 Carcetti T 98
 Barksdale A 91
 Haynes G 70

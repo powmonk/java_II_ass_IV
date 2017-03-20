@@ -15,7 +15,7 @@ public class ReadFileAsVector {
 			reader = new BufferedReader(new FileReader(fileName));
 		}catch(FileNotFoundException fnfe){
 			System.out.println("Error on opening file data");
-			System.exit(1);
+			System.exit(2);
 		}
 		
 		boolean done = false;
@@ -26,7 +26,7 @@ public class ReadFileAsVector {
 				inputLine = reader.readLine();
 			}catch(IOException ioe){
 				System.out.println("I/O error");
-				System.exit(2);
+				System.exit(3);
 			}
 			if(inputLine == null){
 				done = true;
@@ -38,7 +38,7 @@ public class ReadFileAsVector {
 			reader.close();
 		}catch(IOException ioe){
 			System.out.println("Error closing file '"+fileName+"'");
-			System.exit(3);
+			System.exit(4);
 		}
 		
 		return wordList;

@@ -12,11 +12,18 @@ public class Results {
 		boolean done = false;
 		int floor = 0;
 		int count = result.length-1;
+		int a = 999;
+		int b = 999;
 
 		while(!done){
 			if(count > floor){
-				int a = (int)(Character.toUpperCase(result[count  ].split(" |	")[word].charAt(letter)));
-				int b = (int)(Character.toUpperCase(result[count-1].split(" |	")[word].charAt(letter)));
+				if(letter < result[count].split(" |	")[word].length()){
+					a = (int)(Character.toUpperCase(result[count  ].split(" |	")[word].charAt(letter)));
+				}
+
+				if(letter < result[count-1].split(" |	")[word].length()){
+					b = (int)(Character.toUpperCase(result[count-1].split(" |	")[word].charAt(letter)));
+				}
 
 				if(a<b){
 					swap(count-1, count);
@@ -52,12 +59,16 @@ public class Results {
 
 
 	public static void main(String[] args){
-			result = ReadFileAsArray.readFile("marks.txt");
+			if(args.length != 1){
+				System.out.println("Usage: java Results <filename>");
+				System.exit(1);
+			}
+			result = ReadFileAsArray.readFile(args[0]);
 			
 			getMaxValues();
 			
-			alphabetiseArray(1,0);
-			alphabetiseArray(0,2);
+			alphabetiseArray(1,100);
+			alphabetiseArray(0,100);
 			
 			swapPositions(0,1);
 			
