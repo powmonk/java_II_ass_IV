@@ -40,24 +40,27 @@ public class Results {
 //		}
 //	}
 	
-	private static void swapPositions(int x, int y) {
-		for(int i=0;i<result.length;i++){
-			String[] loopArray = result[i].split(" |	");
-			String cache = loopArray[0];
-			loopArray[0] = loopArray[1];
-			loopArray[1] = cache;
-			result[i]="";
-			for(int j=0;j<loopArray.length;j++){
-				result[i]= result[i] + loopArray[j] + " ";
-			}
-		}
-	}
+//	private static void swapPositions(int x, int y) {
+//		for(int i=0;i<result.length;i++){
+//			String[] loopArray = result[i].split(" |	");
+//			String cache = loopArray[0];
+//			loopArray[0] = loopArray[1];
+//			loopArray[1] = cache;
+//			result[i]="";
+//			for(int j=0;j<loopArray.length;j++){
+//				result[i]= result[i] + loopArray[j] + " ";
+//			}
+//		}
+//	}
 
 
 	public static void main(String[] args){
 			result = ReadFileAsVector.readFile("marks.txt");
 			
-			result.sort();
+			
+//			getMaxValues();
+			
+			result.sort(null);
 			
 			String underline = String.valueOf((char)196);
 			underline = underline + underline + underline + underline;
@@ -65,23 +68,30 @@ public class Results {
 			output.printf("%-"+nameLng+"s%-10s\n", "Name", "Mark");			
 			output.printf("%-"+nameLng+"s%-10s\n", underline, underline);		
 			
+			for(int i=0;i<result.size();i++){
+				String[] tmp = result.get(i).split(" |	");
+				output.printf("%-"+nameLng+"s%3s\n", tmp[1] +" "+ tmp[0], tmp[2]);
+//				output.printf("%-"+nameLng+"s%3s\n", result.get(i)[1] +" "+result.get(i)[0], result.get(i)[2]);
+			}
+			
+			
+	
+	
 	}
 	
 //	private static void getMaxValues() {
-//		for(int i=0;i<result.length;i++){
-//			String[] tmp = result[i].split(" |	");
-//			if(tmp[0].length()>initLng)
-//				initLng = tmp[0].length();
-//			
-//			if(tmp[1].length()>surLng)
-//				surLng = tmp[1].length();
+//		for(int i=0;i<result.size();i++){
+//			if(result.get(i)[0].length()>surLng)
+//				surLng = result.get(i)[0].length();
+//			if(result.get(i)[1].length()>initLng)
+//				initLng = result.get(i)[1].length();
 //		}
 //		nameLng = initLng + surLng;
 //	}
 
-//	private static int initLng = 0;
-//	private static int surLng = 0;
-	private static int nameLng = 0;
+	private static int initLng = 0;
+	private static int surLng = 0;
+	private static int nameLng = 15;
 	private static PrintStream output = new PrintStream(System.out);
-	private static Vector<String[]> result;
+	private static Vector<String> result;
 }
